@@ -15,10 +15,21 @@ const signup = async (req,res) => {
 
         
     }
-    
+
 }
-const login = async (re)
+const login = async (req,res) => {
+    try{
+        const {email,password}=req.body
+        const user = await userService.loginUser(email,password)
+        res.status(200).json({message:"user login successful"})
+    } catch (err) {
+        res.status(400).json({
+            message:err.message
+        })
+
+    }
+}
 module.exports={
-    signup
+    signup,
     login
 }
