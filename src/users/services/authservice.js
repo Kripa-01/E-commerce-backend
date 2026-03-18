@@ -7,7 +7,7 @@ const createUser = async(userdata)=>{
     return user
 }
 const loginUser = async(email,password)=>{
-    const user = await User.findOne(email)
+    const user = await User.findOne({email})
     if(!user){
         throw Error("User Not Found")
     }
